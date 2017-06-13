@@ -22,6 +22,7 @@ var DEADLINE *int
 var ARGS string
 
 func main() {
+
 	// Vars
 	var (
 		onetime, default_port        *int
@@ -47,7 +48,10 @@ func main() {
 	conn_timeout = time.Duration(*t) * time.Second
 	global_timeout = time.Duration(*T) * time.Second
 	ARGS = strings.Join(flag.Args(), " ")
-
+	if len(os.Args) < 2 {
+		flag.Usage()
+		os.Exit(1)
+	}
 	// Pre-Processing
 	runtime.GOMAXPROCS(runtime.NumCPU())
 	auth := []ssh.AuthMethod{}
