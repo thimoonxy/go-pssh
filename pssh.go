@@ -135,9 +135,12 @@ func RunCtl(hostlist []string, onetime int, conf *ssh.ClientConfig) {
 		}
 	}
 	// printout
-	close(stdout)
-	for output := range stdout {
-		fmt.Println(output)
+	/*	close(stdout)
+		for output := range stdout {
+			fmt.Println(output)
+		}*/
+	for i := 0; i < sum; i++ {
+		fmt.Println(<-stdout)
 	}
 }
 
